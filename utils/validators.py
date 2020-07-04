@@ -1,15 +1,14 @@
 from os import path
-from typing import NoReturn
 
 from utils.exceptions import FileTypeError, MissingFileError
 
 
-def file_exists(file) -> bool:
+def file_exists(file) -> None:
     if not path.exists(file):
         raise MissingFileError(file)
 
 
-def validate_type(file_type) -> NoReturn:
-    allowed_types = ['csv', 'json', 'xlsx', ]
+def validate_type(file_type) -> None:
+    allowed_types = ['.csv', '.json', '.xlsx', ]
     if file_type not in allowed_types:
         raise FileTypeError(allowed_types)
