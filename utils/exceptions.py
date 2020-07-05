@@ -11,10 +11,21 @@ class InputError(Exception):
 
 
 class FileTypeError(Exception):
-    def __init__(self, allowed_types) -> None:
+    def __init__(self, allowed_extensions) -> None:
         self.message = f'''
             This type is not supported.
-            Should be one of the following {allowed_types}
+            Should be one of the following {allowed_extensions}
+        '''
+
+    def __str__(self) -> str:
+        return self.message
+
+
+class ModeTypeError(Exception):
+    def __init__(self, allowed_modes) -> None:
+        self.message = f'''
+            This input mode is not supported.
+            Should be one of the following {allowed_modes}
         '''
 
     def __str__(self) -> str:
@@ -26,6 +37,17 @@ class MissingFileError(Exception):
         self.message = f'''
             File {file} was not found in project directory.
             Remember that file should be placed in the same directory as <main.py>
+        '''
+
+    def __str__(self) -> str:
+        return self.message
+
+
+class InvalidColumnsAmountError(Exception):
+    def __init__(self, user_columns_count, data_columns_count) -> None:
+        self.message = f'''
+            Number of columns that you specified - {user_columns_count} is greater than
+            number of columns in csv file - {data_columns_count}
         '''
 
     def __str__(self) -> str:
