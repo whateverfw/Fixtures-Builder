@@ -6,5 +6,6 @@ GO_TO_NEXT_STAGE = {
     'csv':  csv_main
 }
 
+
 def execute_reader(input_model: str) -> None:
     GO_TO_NEXT_STAGE[input_model]()
