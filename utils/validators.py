@@ -29,14 +29,3 @@ def validate_input_mode(input_mode) -> None:
     allowed_modes = ['manual', 'csv', 'json', 'excel', 'sql']
     if input_mode not in allowed_modes:
         raise ModeTypeError(allowed_modes)
-
-
-def validate_csv_data(data: pd.DataFrame, column_names: List[str]) -> None:
-    user_columns_count = len(column_names)
-    data_columns_count = len(data.columns)
-    print(user_columns_count)
-    print(data_columns_count)
-    print(user_columns_count > data_columns_count)
-    if user_columns_count > data_columns_count:
-        raise InvalidColumnsAmountError(user_columns_count, data_columns_count)
-

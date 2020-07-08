@@ -30,8 +30,3 @@ def get_csv_data(path_to_file: str, delimiter: str) -> pd.DataFrame:
 
 def get_delimiter() -> str:
     return input('Please enter delimiter in your csv file: ')
-
-
-
-
-

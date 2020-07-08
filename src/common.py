@@ -35,5 +35,3 @@ def build_json_fixture(original_data: pd.DataFrame) -> List[Dict]:
         data.append(row)
 
     return data
-
-

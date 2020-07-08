@@ -1,9 +1,9 @@
 import sys
 from typing import List
 
+from src.worker import execute_reader
 from utils.validators import validate_input_mode
 from utils.exceptions import InputError
-from src.worker import execute_reader
 
 
 def get_user_input() -> List[str]:

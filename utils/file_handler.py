@@ -13,6 +13,3 @@ def get_file_from_user_input() -> str:
 
 def get_full_path_to_file(file_name: str) -> str:
     return f'{PROJECT_ROOT}/{file_name}'
-
-
-
