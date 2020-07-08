@@ -1,10 +1,10 @@
-from typing import List
+from typing import List, Dict
 
 import pandas as pd
 
 from constants import PROJECT_ROOT
 from src.handle_output import write_to_json
-from src.common import get_primary_key_start_value, get_model_name
+from src.common import get_primary_key_start_value, get_model_name, get_column_names
 from utils.file_handler import get_file_from_user_input
 from utils.validators import validate_file
 
@@ -19,10 +19,11 @@ def read_csv(file_name: str) -> None:
     path_to_file = f'{PROJECT_ROOT}/{file_name}'
     delimiter = get_delimiter()
     csv_data = get_csv_data(path_to_file, delimiter)
-    build_json_fixture(csv_data)
+    data = build_json_fixture(csv_data)
+    write_to_json(data)
 
 
-def build_json_fixture(csv_data: pd.DataFrame) -> None:
+def build_json_fixture(csv_data: pd.DataFrame) -> List[Dict]:
     pk = get_primary_key_start_value()
     model = get_model_name()
     data = []
@@ -35,10 +36,10 @@ def build_json_fixture(csv_data: pd.DataFrame) -> None:
             'model': model,
             'fields': fields
         }
-        pk = pk + 1
+        pk += 1
         data.append(row)
 
-    write_to_json(data)
+    return data
 
 
 def get_csv_data(path_to_file: str, delimiter: str) -> pd.DataFrame:
@@ -53,8 +54,6 @@ def get_delimiter() -> str:
     return input('Please enter delimiter in your csv file: ')
 
 
-def get_column_names() -> List[str]:
-    return input('Enter column names separated by space: ').split(' ')
 
 
 

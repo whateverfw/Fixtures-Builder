@@ -4,7 +4,7 @@ from typing import List
 
 def write_to_json(data: List) -> None:
     output_file_name = get_output_file_name()
-    with open(f'{output_file_name}.json', 'w') as json_fixtures:
+    with open(f'output/{output_file_name}.json', 'w') as json_fixtures:
         json.dump(data, json_fixtures)
 
 

@@ -1,6 +1,7 @@
 from src.handle_csv import csv_main
 from src.handle_manual import manual_main
 
+
 GO_TO_NEXT_STAGE = {
     'manual': manual_main,
     'csv':  csv_main
